@@ -1,0 +1,32 @@
+-- 1. Create Admin Table
+CREATE TABLE admin (
+    ID INT PRIMARY KEY IDENTITY(1,1),
+    UserName NVARCHAR(50),
+    Password NVARCHAR(50),
+    UpdationDate DATE,
+    FullName NVARCHAR(100)
+);
+
+-- 2. Create Courses Table
+CREATE TABLE Courses (
+    CourseID INT PRIMARY KEY IDENTITY(1,1),
+    CourseCode NVARCHAR(50),
+    CourseName NVARCHAR(100)
+);
+
+-- 3. Create Students Table
+CREATE TABLE Students (
+    StudentID NVARCHAR(50) PRIMARY KEY, -- Using NVARCHAR as shown in your image
+    StudentName NVARCHAR(100),
+    RunningYear INT,
+    RunningSemester INT,
+    CreatedAt DATETIME DEFAULT GETDATE()
+);
+
+-- 4. Create Results Table
+CREATE TABLE Results (
+    ResultID INT PRIMARY KEY IDENTITY(1,1),
+    StudentID NVARCHAR(50),
+    CourseCode NVARCHAR(50),
+    MarksObtained INT
+);

@@ -1,0 +1,136 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="ResultManagementSystem.Site" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>RMS Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" />
+    <style>
+        :root {
+            --sidebar-bg: #1e293b;
+            --sidebar-hover: #334155;
+            --text-muted: #94a3b8;
+            --accent-color: #38bdf8;
+        }
+
+        body {
+            background-color: #f8fafc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+        }
+
+        #sidebar {
+            min-width: 260px; /* Slightly narrower to save space */
+            max-width: 260px;
+            min-height: 100vh;
+            background: var(--sidebar-bg);
+            color: #fff;
+            box-shadow: 4px 0 10px rgba(0,0,0,0.1);
+        }
+
+        .sidebar-header {
+            padding: 1.5rem 1rem;
+            border-bottom: 1px solid #334155;
+            text-align: center;
+        }
+
+            .sidebar-header h4 {
+                font-size: 1.25rem; /* Adjusted header size */
+                font-weight: 700;
+                color: var(--accent-color);
+                margin: 0;
+            }
+
+        #sidebar ul li {
+            margin: 4px 10px; /* Reduced margin */
+        }
+
+            #sidebar ul li a {
+                padding: 10px 12px; /* Tighter padding */
+                display: flex;
+                align-items: center;
+                color: var(--text-muted);
+                text-decoration: none;
+                border-radius: 6px;
+                transition: all 0.2s ease;
+                font-size: 0.95rem; /* Standard readable font size */
+                white-space: nowrap; /* CRITICAL: Prevents text from breaking into 2 lines */
+                overflow: hidden;
+            }
+
+                #sidebar ul li a i {
+                    font-size: 1.1rem; /* Scaled down icon size */
+                    margin-right: 10px; /* Adjusted spacing between icon and text */
+                    width: 20px; /* Fixed width for icons ensures text aligns vertically */
+                    text-align: center;
+                }
+
+                #sidebar ul li a:hover {
+                    background: var(--sidebar-hover);
+                    color: #fff;
+                }
+
+        .logout-link {
+            margin-top: 30px !important;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            padding: 25px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="d-flex">
+            <nav id="sidebar">
+                <div class="sidebar-header">
+                    <h4><i class="bi bi-shield-lock-fill me-2"></i>RMS PANEL</h4>
+                </div>
+
+                <div class="p-3">
+                    <p class="text-uppercase small fw-bold text-muted px-3 mb-2" style="font-size: 0.7rem;">Main Menu</p>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="Admin.aspx">
+                                <i class="bi bi-grid-1x2-fill"></i>Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a href="ManageCourses.aspx">
+                                <i class="bi bi-journal-bookmark-fill"></i>Manage Courses
+                            </a>
+                        </li>
+                        <li>
+                            <a href="ManageResults.aspx">
+                                <i class="bi bi-clipboard-data-fill"></i>Manage Results
+                            </a>
+                        </li>
+                        <li>
+                            <a href="ManageStudents.aspx">
+                                <i class="bi bi-people-fill"></i>Manage Students
+                            </a>
+                        </li>
+                        <li>
+                            <a href="ManageAdmin.aspx">
+                                <i class="bi bi-person-gear"></i> Manage Admin
+                            </a>
+                        </li>
+                        <li class="logout-link">
+                            <asp:LinkButton ID="lnkLogout" runat="server" OnClick="lnkLogout_Click">
+                                <i class="bi bi-box-arrow-left"></i> Logout
+                            </asp:LinkButton>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="main-content">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
